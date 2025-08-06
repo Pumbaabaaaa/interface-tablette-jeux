@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF‑8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interface Tablette - Jeux & RH</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+    }
+    header, footer {
+      background: #34495e;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .icon-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 120px;
+      border-radius: 1rem;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: bold;
+      font-size: 14px;
+      transition: transform 0.2s;
+    }
+    .icon-button:hover {
+      transform: scale(1.05);
+    }
+    .icon-button img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 0.5rem;
+    }
+    iframe {
+      width: 100%;
+      height: 90vh;
+      border: none;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tablette - Accès rapide</h1>
+  </header>
+
+  <main>
+    <a class="icon-button" href="#" onclick="launchGame('snake')">
+      <img src="https://via.placeholder.com/48?text=🐍" alt="Snake">
+      Snake
+    </a>
+    <a class="icon-button" href="#" onclick="launchGame('tic-tac-toe')">
+      <img src="https://via.placeholder.com/48?text=⭕" alt="Tic Tac Toe">
+      Tic Tac Toe
+    </a>
+    <a class="icon-button" href="#" onclick="launchGame('pong')">
+      <img src="https://via.placeholder.com/48?text=🏓" alt="Pong">
+      Pong
+    </a>
+    <a class="icon-button" href="#" onclick="showIframe('catalogue')">
+      <img src="https://via.placeholder.com/48?text=📦" alt="Catalogue">
+      Catalogue
+    </a>
+    <a class="icon-button" href="#" onclick="showIframe('salaires')">
+      <img src="https://via.placeholder.com/48?text=💰" alt="Salaires">
+      Salaires
+    </a>
+  </main>
+
+  <iframe id="gameFrame"></iframe>
+
+  <footer>
+    <p>© 2025 — Interface RH & Jeux</p>
+  </footer>
+
+  <script>
+    function launchGame(game) {
+      const frame = document.getElementById('gameFrame');
+      let url = '';
+      if (game === 'snake') url = 'https://playsnake.org/';
+      else if (game === 'tic-tac-toe') url = 'https://playtictactoe.org/';
+      else if (game === 'pong') url = 'https://ponggame.org/';
+      if (url) {
+        frame.src = url;
+        frame.style.display = 'block';
+      }
+    }
+
+    function showIframe(type) {
+      const frame = document.getElementById('gameFrame');
+      let url = '';
+      if (type === 'catalogue') url = 'https://script.google.com/macros/s/AKfycbxH2lp98DJzTnRNL3iUm_mAFb_1KEqXMiguu_c-Vq4Xo2rcFqdzQ64xA6qQrDkpQ0G0vg/exec';
+      else if (type === 'salaires') url = 'https://docs.google.com/spreadsheets/d/1sXWLnefUa6tcojnHJxqY5B9ufSU12kjFwTiWns7dOU0/edit?gid=1926526348';
+      if (url) {
+        frame.src = url;
+        frame.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
